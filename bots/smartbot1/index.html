@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>darknet://relay — secure terminal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- CRT overlays -->
+<div class="sweep" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- App shell -->
+<div class="app">
+
+    <!-- ============ TOP BAR ============ -->
+    <header class="topbar">
+        <div class="brand">
+            <span class="led"></span>
+            <span id="brandName">darknet<span class="proto">://</span>relay</span>
+            <span class="ver" id="brandVersion">v3.1.7</span>
+        </div>
+        <div class="topbar-right">
+            <span class="live hide-sm"><i class="led"></i> onion circuit established</span>
+            <span id="clock">--:--:--</span>
+        </div>
+    </header>
+
+    <!-- ============ WORKSPACE ============ -->
+    <!-- Future panels/windows can be appended inside .workspace -->
+    <main class="workspace">
+
+        <section class="terminal">
+            <div class="log" id="log" role="log" aria-live="polite"></div>
+
+            <div class="prompt">
+                <span class="ps1" id="ps1">root@darknet:~#</span>
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="awaiting input..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    disabled
+                >
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ STATUS BAR ============ -->
+    <footer class="statusbar">
+        <div>
+            <span class="ok">● encrypted</span>
+            <span>onion v3</span>
+            <span>no logs</span>
+        </div>
+        <div>
+            <span id="mem">mem 41%</span>
+            <span id="cpu">cpu 12%</span>
+            <span>build 3.1.7</span>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<!-- Order matters: config → commands → terminal → app -->
+<script src="config.js"></script>
+<script src="commands.js"></script>
+<script src="terminal.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
